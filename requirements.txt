@@ -1,2 +1,4 @@
-pydantic
-openai
+pydantic==2.7.1
+openai==1.30.1
+fastapi
+uvicorn
