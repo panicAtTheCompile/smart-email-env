@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from env.environment import EmailEnv
-from env.models import Action
+from environment import EmailEnv
+from models import Action
 
 app = FastAPI()
 env = EmailEnv()
