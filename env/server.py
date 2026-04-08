@@ -3,17 +3,22 @@ from env.environment import EmailEnv
 from env.models import Action
 
 app = FastAPI()
-
 env = EmailEnv()
 
 
 @app.post("/reset")
 async def reset():
     result = await env.reset()
+
     return {
-        "observation": result.observation.dict(),
-        "reward": result.reward,
-        "done": result.done
+        "observation": {
+            "email_text": result.observation.email_text,
+            "thread_history": result.observation.thread_history,
+            "metadata": result.observation.metadata,
+        },
+        "reward": float(result.reward),
+        "done": bool(result.done),
+        "info": {}
     }
 
 
@@ -23,9 +28,14 @@ async def step(action: dict):
     result = await env.step(act)
 
     return {
-        "observation": result.observation.dict(),
-        "reward": result.reward,
-        "done": result.done
+        "observation": {
+            "email_text": result.observation.email_text,
+            "thread_history": result.observation.thread_history,
+            "metadata": result.observation.metadata,
+        },
+        "reward": float(result.reward),
+        "done": bool(result.done),
+        "info": {}
     }
 
 
