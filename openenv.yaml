@@ -1,0 +1,13 @@
+name: smart_email_assistant_env
+description: Multi-step real-world email triage and response environment
+
+tasks:
+  - classification_easy
+  - extraction_medium
+  - response_hard
+
+action_space:
+  type: structured
+
+observation_space:
+  type: structured
